@@ -1,0 +1,13 @@
+@echo off
+conda activate yolov5
+echo Running Python Script 1
+python  path\to\your\first\script.py
+echo.
+echo Running Python Script 2
+python path\to\your\second\script.py
+echo.
+echo Running Python Script 3
+python path\to\your\third\script.py
+echo.
+echo All scripts executed
+pause

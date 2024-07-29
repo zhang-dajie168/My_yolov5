@@ -1,0 +1,31 @@
+
+# 1.数据增强
+DataAug:
+  is_open_augement: True # 是否打开数据增强
+  is_addNoise: False    # 随机模糊
+  is_changeLight: True   # 调整亮度
+  is_cutout: False      # 裁剪
+  is_rotate_img_bbox: True # 旋转
+  is_crop_img_bboxes: False  # 复制目标框
+  is_shift_pic_bboxes: True  # 水平镜像翻转
+  is_filp_pic_bboxes: True  #垂直镜像翻转
+  need_aug_num: 4   # 每张图片需要增强的次数
+  is_endwidth_dot: true  # 文件是否以.jpg或者.bmp结尾
+
+
+  source_img_path: "F:\30010ECR-2\30010ECR-c_img"    #数据增强图片地址
+  source_xml_path: "F:\30010ECR-2\xml-t0"   #数据增强标签地址
+  save_img_path: 'E:\yolov5\VOCdevkit\VOC2007\JPEGImages'    #数据增强后图片保存地址
+  save_xml_path: 'E:\yolov5\VOCdevkit\VOC2007\Annotations'   #数据增强后标签保存地址
+
+# 2.数据集划分
+split_train_val:
+  class_name: [ 't0' ]   # 标签类别
+  train_ratio: 90   # 划分训练集、测试集比例，训练集占比90%
+
+# 3.模型训练
+train:
+  weight: 'E:\yolov5\yolov5s.pt'     # 预训练模型权重文件
+  train_img_path: 'E:\yolov5\VOCdevkit\images\train'    # 训练集图片地址
+  val_img_path: 'E:\yolov5\VOCdevkit\images\val'       # 测试集图片地址
+
