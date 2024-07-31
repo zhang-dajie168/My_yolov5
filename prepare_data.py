@@ -8,7 +8,7 @@ from shutil import copyfile
 
 import yaml
 # 读取配置文件
-with open(R'E:\yolov5\config_data.yaml', 'r') as f:
+with open('/home/ymt/yolov5/config_data.yaml', 'r') as f:
     config = yaml.load(f, Loader=yaml.FullLoader)
 
     classes=config['split_train_val']['class_name']
@@ -131,17 +131,20 @@ for i in range(0, len(list_imgs)):
         label_path = os.path.join(yolo_labels_dir, label_name)
     prob = random.randint(1, 100)
     print("Probability: %d" % prob)
+
     if (prob < TRAIN_RATIO):  # train dataset
         if os.path.exists(annotation_path):
             train_file.write(image_path + '\n')
             convert_annotation(nameWithoutExtention)  # convert label
             copyfile(image_path, yolov5_images_train_dir + voc_path)
             copyfile(label_path, yolov5_labels_train_dir + label_name)
+        
     else:  # test dataset
         if os.path.exists(annotation_path):
             test_file.write(image_path + '\n')
             convert_annotation(nameWithoutExtention)  # convert label
             copyfile(image_path, yolov5_images_test_dir + voc_path)
             copyfile(label_path, yolov5_labels_test_dir + label_name)
+
 train_file.close()
 test_file.close()
